@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='data_import_mapper.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400&display=swap" rel="stylesheet">
+    <title>Data Import Mapper</title>
+</head>
+
+<body>
+    <div class="navBar">
+        <div class="logoBlock">
+            <img class="logoIcon" src="{{ url_for('static', filename='icon.png')}}">
+            <p class="headName">DATA IMPORT MAPPER</p>
+        </div>
+        <div class="buttonBlock">
+            <label class="filename"></label>
+            <form id='formElement' method="POST" enctype="multipart/form-data">
+                <input type="file" id="myfile" name="myfile"
+                    accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                <!--<input type="submit" name="upload_file" value="" class="inputUploadButton">-->
+            </form>
+            <button class="openExcel">OPEN EXCEL</button>
+            <button class="autoMapping" disabled>AUTO MAPPING</button>
+            <button class="manualMapping" disabled>MANUAL MAPPING</button>
+            <button class="saveExcel" disabled>SAVE EXCEL</button>
+            <button class="saveDatabase" disabled>SAVE TO DATABASE</button>
+        </div>
+        <div class="mobNav">
+            <p>&#9776;</p>
+        </div>
+    </div>
+
+    <div class="sidenav">
+        <a href="javascript:void(0)" class="closebtn">&times;</a>
+        <div>
+            <button class="openExcel2" onclick="">OPEN EXCEL</button>
+            <button class="autoMapping2" disabled>AUTO MAPPING</button>
+            <button class="manualMapping2" disabled>MANUAL MAPPING</button>
+            <button class="saveExcel2" disabled>SAVE EXCEL</button>
+            <button class="saveDatabase2" disabled>SAVE TO DATABASE</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <!--<div class="indexNoCol">INDEX NO</div>
+            <div class="nameCol">NAME</div>
+            <div class="firstNameCol">FIRST NAME</div>
+            <div class="middleNameCol">MIDDLE NAME</div>
+            <div class="lastNameCol">LAST NAME</div>
+            <div class="companyCol">COMPANY</div>
+            <div class="designationCol">DESIGNATION</div>
+            <div class="cityCol">CITY</div>
+            <div class="zipCol">ZIP</div>
+            <div class="dobCol">DATE OF BIRTH</div>
+            <div class="startDateCol">START DATE</div>
+            <div class="endDateCol">END DATE</div>-->
+        </div>
+        <div class="resultSet">
+            <!--<div class="entry">
+                <div class="indexNoCol"></div>
+                <div class="nameCol"></div>
+                <div class="firstNameCol"></div>
+                <div class="middleNameCol"></div>
+                <div class="lastNameCol"></div>
+                <div class="companyCol"></div>
+                <div class="designationCol"></div>
+                <div class="cityCol"></div>
+                <div class="zipCol"></div>
+                <div class="dobCol"></div>
+                <div class="startDateCol"></div>
+                <div class="endDateCol"></div>
+            </div>-->
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="mapForm">
+                <div>
+                    <p>Name</p><select id="name" name="name" size="1"></select>
+                </div>
+                <div>
+                    <p>First Name</p><select id="firstName" name="name" size="1"></select>
+                </div>
+                <div>
+                    <p>Middle Name</p><select id="middleName" name="name" size="1"></select>
+                </div>
+                <div>
+                    <p>Last Name</p><select id="lastName" name="name" size="1"></select>
+                </div>
+                <div>
+                    <p>Company</p><select id="company" name="name" size="1"></select>
+                </div>
+                <div>
+                    <p>Designation</p><select id="designation" name="name" size="1"></select>
+                </div>
+                <div>
+                    <p>City</p><select id="city" name="name" size="1"></select>
+                </div>
+                <div>
+                    <p>Zip</p><select id="zip" name="name" size="1"></select>
+                </div>
+                <div>
+                    <p>Date of Birth</p><select id="dob" name="name" size="1"></select>
+                </div>
+                <div>
+                    <p>Start Date</p><select id="startDate" name="name" size="1"></select>
+                </div>
+                <div>
+                    <p>End Date</p><select id="endDate" name="name" size="1"></select>
+                </div>
+                <button class="saveMapping">MAP EXCEL</button>
+            </div>
+            <div class="infoBlock">
+                <h2>Data Import Mapper</h2><br>
+                <h3>How to Use</h3>
+                <ul>
+                    <li>Click on the OPEN EXCEL button to load an excel file.</li>
+                    <li>NOTE: The column names of the excel file should not have any commas.</li>
+                    <li>The excel file will automatically appear in the table along with a confirmation message.</li>
+                    <li>NOTE: The table provided only show first 50 rows to prevent unnecessary load.</li>
+                    <li>Click the AUTO MAPPING button to automaticlly map the excel files.</li>
+                    <li>Click on MANUAL MAPPING to perform the mapping manually.</li>
+                    <li>Select the appropriate columns and click MAP EXCEL.</li>
+                    <li>On successful completion, data will appear in the table.</li>
+                    <li>Export the data to a new excel file using SAVE EXCEL bytton.</li>
+                    <li>Save to Database has not been implemented yet.</li>
+                </ul><br>
+                <h3>About</h3>
+                <ul>
+                    <li>Supported files : excel files ( .xlsx , xls )</li>
+                    <li>This web app maps unordered excel columns to their appropriate columns which correct column
+                        names.</li>
+                    <li>It supports both automatic mapping and manual mapping.</li>
+                </ul><br>
+                <h3>Automatic Mapping</h3>
+                <ul>
+                    <li>Determines, DOB, Start date and end date on its own. Will throw an error if 3 date columns are
+                        not present.</li>
+                    <li>Intelligently matches first name, last name, middle name and name based on predefined column
+                        substrings.</li>
+                    <li>If Name is not present, it constructs name from First Name, Middle Name and Last Name.</li>
+                    <li>If First and Last Names are not present it constructs them from Name.</li>
+                    <li>Determines zip code, by looking for column with 6 digit integers.</li>
+                    <li>Determines Designation by matching substrings or looping over list of designations.</li>
+                    <li>Determines rest of the columns by matching substrings.</li>
+                </ul><br>
+                <h3>Manual Mapping</h3>
+                <ul>
+                    <li>Manually select the appropiate column from the list of columns present.</li>
+                    <li>Set a column as empty string.</li>
+                    <li>Set first Name and Last Name from Name.</li>
+                    <li>Set Name as First Name + Last Name.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="float">
+        <p>?</p>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='data_import_mapper.js')}}"></script>
+    <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/3.9.0/exceljs.js"></script>
+</body>
+
+</html>

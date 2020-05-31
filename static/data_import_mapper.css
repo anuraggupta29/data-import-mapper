@@ -1,0 +1,555 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+}
+
+html {
+    height: 100%;
+    background: white;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    background-attachment: fixed;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/**********ALL NAVBAR CSS**************************************/
+
+.navBar {
+    min-height: 84px;
+    max-height: 84px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0D7239;
+    width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.logoBlock {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    padding-left: 16px;
+}
+
+.logoIcon {
+    height: 64px;
+}
+
+.headName {
+    min-width: 320px;
+    padding-left: 14px;
+    font-family: 'Barlow', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+}
+
+.buttonBlock {
+    height: 100%;
+    padding-right: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+#myfile {
+    display: None;
+}
+
+.buttonBlock button,
+.sidenav div button {
+    margin: 0px 10px 0px 10px;
+    height: 32px;
+    background-color: #079042;
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+}
+
+.buttonBlock button:hover {
+    background-color: #FFFFFF;
+    color: #079042;
+    transition: 0.2s;
+}
+
+.buttonBlock button:focus,
+.sidenav div button:focus {
+    background-color: #107C41;
+    color: #FFFFFF;
+    transition: 0.2s;
+}
+
+.openExcel,
+.saveExcel {
+    width: 130px;
+}
+
+.manualMapping,
+.autoMapping {
+    width: 180px;
+}
+
+.saveDatabase {
+    width: 200px;
+}
+
+.mobNav {
+    display: none;
+    font-size: 36px;
+    color: #FFFFFF;
+    padding-right: 16px;
+}
+
+.float p {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/************************SIDE NAV*******************************/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 1);
+    border-left: solid 1px #BBBBBB;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.sidenav div {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.sidenav div button {
+    margin: 10px 0px 10px 0px;
+    height: 40px;
+    width: 220px;
+    background-color: #079042;
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.05);
+    box-sizing: border-box;
+}
+
+.sidenav div button:hover {
+    background-color: #FFFFFF;
+    border: 2px solid #079042;
+    color: #079042;
+    transition: 0.2s;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 48px;
+    text-decoration: none;
+    color: #AAAAAA;
+    font-weight: bold;
+}
+
+.sidenav .closebtn:hover,
+.sidenav .closebtn:focus {
+    color: #107C41;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*********CONTENT***********************************************/
+.container {
+    height: calc(100vh - 84px);
+    width: 100vw;
+    color: #FFFFFF;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    border-radius: 0px;
+}
+
+.header {
+    width: fit-content;
+    height: 48px;
+    display: table;
+    background-color: #107C41;
+    color: #FFFFFF;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+}
+
+.header div {
+    min-width: 200px;
+    max-width: 200px;
+    text-align: center;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+    padding: 0px 5px 0px 5px;
+
+}
+
+.resultSet {
+    width: fit-content;
+    height: 100%;
+    background-color: #FFFFFF;
+    font-size: 14px;
+    color: #333333;
+    letter-spacing: 1px;
+    font-weight: 500;
+    overflow-y: overlay;
+    box-sizing: border-box;
+}
+
+.entry {
+    width: fit-content;
+    height: 48px;
+    display: table;
+    box-sizing: border-box;
+}
+
+.entry div {
+    min-width: 200px;
+    max-width: 200px;
+    text-align: center;
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    border: 1px solid #EEEEEE;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0px 5px 0px 5px;
+}
+
+/*************************MODAL**********************************/
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 960px;
+    height: 540px;
+    box-sizing: border-box;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 36px;
+    line-height: 24px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #107C41;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.infoBlock{
+    padding: 0px 40px 0px 40px;
+    margin: 20px auto auto auto;
+    font-family: 'Barlow';
+    height: 90%;
+    display: none;
+    overflow-y: scroll;
+    box-sizing: border-box
+}
+
+.infoBlock ul > li {
+    margin: 3px 0px 3px 0px;
+}
+
+.infoBlock h2{
+    font-size: 32px;
+}
+
+.infoBlock h3{
+    font-size: 18px;
+}
+
+
+/********************FLOATING INFO*******************************/
+.float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    display: table;
+    background-color: rgb(255, 255, 255);
+    color: #107C41;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    box-sizing: border-box;
+}
+
+.float:hover{
+    border: 2px solid #107C41;
+}
+
+.float p {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+/******************SELECT MENU***********************************/
+.mapForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    align-content: space-between;
+    flex-wrap: wrap;
+    height: 90%;
+    width: 90%;
+    margin: 5% 5% 5% 5%;
+}
+
+.mapForm div {
+
+    margin: 15px 0px 15px 0px;
+}
+
+.mapForm div select {
+    float: right;
+    box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.05);
+    width: 240px;
+    padding: 10px 10px 10px 10px;
+    background: url("caretdown.png") no-repeat right #fff;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background-position: calc(100% - 16px);
+    background-size: 16px 9px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555555;
+}
+
+.mapForm div p {
+    min-width: 100px;
+    max-width: 100px;
+    float: left;
+    margin-right: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #079042;
+}
+
+.saveMapping {
+    margin: 15px 0px 15px 0px;
+    box-sizing: border-box;
+    min-height: 36px;
+    width: 240px;
+    border: solid 2px #079042;
+    border-radius: 4px;
+    color: #079042;
+    font-size: 12px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.saveMapping:hover {
+    background-color: #079042;
+    color: #FFFFFF;
+    transition: 0.2s;
+    border: 0px;
+}
+
+.saveMapping:focus {
+    background-color: #333333;
+    color: #FFFFFF;
+    transition: 0.2s;
+    border: 0px;
+}
+
+/*********************MEDIA QUERY*********************************/
+@media only screen and (max-width: 479px) {
+    .logoBlock {
+        padding-left: 8px;
+    }
+    
+    .logoIcon {
+        height: 48px;
+    }
+    
+    .headName {
+        min-width: 160px;
+        padding-left: 10px;
+        font-size: 16px;
+        letter-spacing: 1px;
+    }
+
+    .mapForm {
+        height: 90%;
+        width: 100%;
+        margin: 40px 0px 0px 0px;
+        box-sizing: border-box;
+    }
+
+    .mapForm div {
+        min-width: 100%;
+    }
+
+    .mapForm div select {
+        max-width: 40vw;
+        min-width: 40vw;
+        padding: 10px 10px 10px 10px;
+        font-size: 3vw;
+    }
+    
+    .mapForm div p {
+        max-width: 25vw;
+        font-size: 3vw;
+    }
+
+    .infoBlock{
+        padding: 0px 5vw 0px 5vw;
+        margin: 5vw auto auto auto;
+        width: 100%;
+        font-size: 4vw;
+        overflow-y: overlay;
+
+    }
+
+    .infoBlock h2{
+        font-size: 6vw;
+    }
+    
+    .infoBlock h3{
+        font-size: 5vw;
+    }
+    
+}
+
+@media only screen and (max-width: 1279px) {
+    .mobNav {
+        display: block;
+    }
+    .buttonBlock {
+        display: none;
+    }   
+}
+
+@media only screen and (max-width: 999px) {
+    .modal-content {
+        width: 90vw;
+        height: 80vh;
+    }
+
+    .mapForm {
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: nowrap;
+        height: 90%;
+        width: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        margin: 40px auto auto auto;
+        box-sizing: border-box;
+    }
+
+    .mapForm div {
+        margin: 8px 0px 8px 0px;
+        box-sizing: border-box;
+    }
+    
+    .mapForm div select {
+        width: 200px;
+        padding: 10px 10px 10px 10px;
+        font-size: 12px;
+    }
+    
+    .mapForm div p {
+        min-width: 100px;
+        max-width: 100px;
+        margin-right: 20px;
+        font-size: 12px;
+    }
+    
+}
+
+/************************SCROLL BAR******************************/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.00);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #CCCCCC;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #505050;
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0.00);
+}
