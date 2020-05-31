@@ -10,6 +10,7 @@ htmlcontent = '';
 
 var outputExcel;
 var filename;
+var myfileVar;
 
 var headers = [];
 var headersoriginal = [];
@@ -20,6 +21,7 @@ autoMap = document.querySelector('.autoMapping')
 saveexcel = document.querySelector('.saveExcel')
 inputUploadButton = document.querySelector('.inputUploadButton')
 saveMap = document.querySelector('.saveMapping');
+loader = document.querySelector('.loader');
 
 openexcel.addEventListener('click', function () {
   filehandle.click();
@@ -33,7 +35,8 @@ saveexcel.addEventListener('click', function () {
 $(function () {
   $('.autoMapping').click(function () {
     var form_data = new FormData();
-    form_data.append('file', $('#myfile').prop('files')[0]);
+    form_data.append('file', myfileVar);
+    loader.style.display = 'block';
     $.ajax({
       type: 'POST',
       url: '/uploader',
@@ -42,6 +45,7 @@ $(function () {
       cache: false,
       processData: false,
       success: function (data) {
+        loader.style.display = 'none';
         if (data != 'Error') {
           outputExcel = JSON.parse(data);
           //console.log(outputExcel);
@@ -61,8 +65,9 @@ $(function () {
   $('.saveMapping').click(function () {
     data_list = getSelectedOptions();
     var form_data = new FormData();
-    form_data.append('file', $('#myfile').prop('files')[0]);
+    form_data.append('file', myfileVar);
     form_data.append('header', data_list);
+    loader.style.display = 'block';
     //console.log(form_data);
     $.ajax({
       type: 'POST',
@@ -72,6 +77,7 @@ $(function () {
       cache: false,
       processData: false,
       success: function (data) {
+        loader.style.display = 'none';
         if (data != 'Error') {
           outputExcel = JSON.parse(data);
           //console.log(outputExcel);
@@ -119,35 +125,25 @@ floatbtn.onclick = function () {
 var fileUpload = document.getElementById('myfile');
 
 fileUpload.onchange = function (evt) {
-  if (typeof (FileReader) != "undefined") {
-
-    var reader = new FileReader();
-
-    //For Browsers other than IE.
-    if (reader.readAsBinaryString) {
+  //console.log(fileUpload.value);
+  if (fileUpload.value != "") {
+    if (typeof (FileReader) != "undefined") {
+      var reader = new FileReader();
       reader.onload = function (e) {
-        enableButtons();
-        ProcessExcel(e.target.result);
+        try {
+          ProcessExcel(e.target.result);
+          enableButtons();
+        } catch (err) {
+          swal("Error!", "There was an error in processing the file.", "error");
+        };
       };
-      reader.readAsBinaryString(fileUpload.files[0]);
-      filename = document.getElementById('myfile').files[0].name.split('.')[0];
+      myfileVar = fileUpload.files[0];
+      reader.readAsBinaryString(myfileVar);
+      filename = myfileVar.name.split('.')[0];
       //console.log(filename);
     } else {
-      //For IE Browser.
-      reader.onload = function (e) {
-        var data = "";
-        var bytes = new Uint8Array(e.target.result);
-        for (var i = 0; i < bytes.byteLength; i++) {
-          data += String.fromCharCode(bytes[i]);
-        }
-        enableButtons();
-        ProcessExcel(data);
-      };
-      reader.readAsArrayBuffer(fileUpload.files[0]);
-      filename = document.getElementById('myfile').files[0].name.split('.')[0];
+      swal("Browser Alert", "This browser doesn't support HTML5", "warning");
     }
-  } else {
-    alert("This browser does not support HTML5.");
   }
 };
 
@@ -351,3 +347,5 @@ document.querySelector('.autoMapping2').addEventListener('click', function (e) {
 document.querySelector('.manualMapping2').addEventListener('click', function (e) {
   manualMap.click();
 })
+
+//------------------------------------TEST APP-----------------------------------

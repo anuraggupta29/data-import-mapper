@@ -134,8 +134,7 @@ a {
     z-index: 1;
     top: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 1);
-    border-left: solid 1px #BBBBBB;
+    background-color: rgba(0, 0, 0, 0.7);
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 60px;
@@ -168,7 +167,6 @@ a {
 
 .sidenav div button:hover {
     background-color: #FFFFFF;
-    border: 2px solid #079042;
     color: #079042;
     transition: 0.2s;
 }
@@ -179,8 +177,7 @@ a {
     right: 20px;
     font-size: 48px;
     text-decoration: none;
-    color: #AAAAAA;
-    font-weight: bold;
+    color: #FFFFFF;
 }
 
 .sidenav .closebtn:hover,
@@ -201,6 +198,7 @@ a {
 }
 
 .header {
+    min-width: 100vw;
     width: fit-content;
     height: 48px;
     display: table;
@@ -235,10 +233,12 @@ a {
     letter-spacing: 1px;
     font-weight: 500;
     overflow-y: overlay;
+    overflow-x: hidden;
     box-sizing: border-box;
 }
 
 .entry {
+    min-width: 100vw;
     width: fit-content;
     height: 48px;
     display: table;
@@ -265,7 +265,6 @@ a {
     display: none;
     position: fixed;
     z-index: 1;
-    padding-top: 100px;
     left: 0;
     top: 0;
     width: 100%;
@@ -278,7 +277,9 @@ a {
     background-color: #fefefe;
     border-radius: 10px;
     box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.1);
-    margin: auto;
+    margin-top: calc(50vh - 270px);
+    margin-left: auto;
+    margin-right: auto;
     padding: 20px;
     border: 1px solid #888;
     width: 960px;
@@ -301,7 +302,7 @@ a {
     cursor: pointer;
 }
 
-.infoBlock{
+.infoBlock {
     padding: 0px 40px 0px 40px;
     margin: 20px auto auto auto;
     font-family: 'Barlow';
@@ -311,45 +312,16 @@ a {
     box-sizing: border-box
 }
 
-.infoBlock ul > li {
+.infoBlock ul>li {
     margin: 3px 0px 3px 0px;
 }
 
-.infoBlock h2{
+.infoBlock h2 {
     font-size: 32px;
 }
 
-.infoBlock h3{
+.infoBlock h3 {
     font-size: 18px;
-}
-
-
-/********************FLOATING INFO*******************************/
-.float {
-    position: fixed;
-    width: 60px;
-    height: 60px;
-    bottom: 40px;
-    right: 40px;
-    display: table;
-    background-color: rgb(255, 255, 255);
-    color: #107C41;
-    border-radius: 50px;
-    text-align: center;
-    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
-    font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 36px;
-    box-sizing: border-box;
-}
-
-.float:hover{
-    border: 2px solid #107C41;
-}
-
-.float p {
-    display: table-cell;
-    vertical-align: middle;
 }
 
 
@@ -367,7 +339,9 @@ a {
 }
 
 .mapForm div {
-
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     margin: 15px 0px 15px 0px;
 }
 
@@ -375,7 +349,7 @@ a {
     float: right;
     box-shadow: 4px 4px 8px 2px rgba(0, 0, 0, 0.05);
     width: 240px;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 30px 10px 10px;
     background: url("caretdown.png") no-repeat right #fff;
     appearance: none;
     -moz-appearance: none;
@@ -386,6 +360,10 @@ a {
     font-size: 14px;
     font-weight: 600;
     color: #555555;
+    overflow:hidden; 
+    white-space:nowrap; 
+    text-overflow:ellipsis;
+
 }
 
 .mapForm div p {
@@ -428,15 +406,15 @@ a {
 }
 
 /*********************MEDIA QUERY*********************************/
-@media only screen and (max-width: 479px) {
+@media only screen and (max-width: 639px) {
     .logoBlock {
         padding-left: 8px;
     }
-    
+
     .logoIcon {
         height: 48px;
     }
-    
+
     .headName {
         min-width: 160px;
         padding-left: 10px;
@@ -444,11 +422,22 @@ a {
         letter-spacing: 1px;
     }
 
+    .modal-content {
+        width: 90vw;
+        height: 80vh;
+        margin-top: 10vh;
+        margin-bottom: 10vh;
+    }
+
     .mapForm {
         height: 90%;
         width: 100%;
         margin: 40px 0px 0px 0px;
         box-sizing: border-box;
+        flex-wrap: nowrap;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        align-items: center;
     }
 
     .mapForm div {
@@ -458,16 +447,16 @@ a {
     .mapForm div select {
         max-width: 40vw;
         min-width: 40vw;
-        padding: 10px 10px 10px 10px;
+        padding: 10px 30px 10px 10px;
         font-size: 3vw;
     }
-    
+
     .mapForm div p {
         max-width: 25vw;
         font-size: 3vw;
     }
 
-    .infoBlock{
+    .infoBlock {
         padding: 0px 5vw 0px 5vw;
         margin: 5vw auto auto auto;
         width: 100%;
@@ -476,29 +465,30 @@ a {
 
     }
 
-    .infoBlock h2{
+    .infoBlock h2 {
         font-size: 6vw;
     }
-    
-    .infoBlock h3{
+
+    .infoBlock h3 {
         font-size: 5vw;
     }
-    
+
 }
 
 @media only screen and (max-width: 1279px) {
     .mobNav {
         display: block;
     }
+
     .buttonBlock {
         display: none;
-    }   
+    }
 }
 
-@media only screen and (max-width: 999px) {
+@media only screen and (min-width: 640px) and (max-width: 999px) {
     .modal-content {
-        width: 90vw;
-        height: 80vh;
+        width: 60vw;
+        min-width: 540px;
     }
 
     .mapForm {
@@ -514,42 +504,112 @@ a {
     }
 
     .mapForm div {
-        margin: 8px 0px 8px 0px;
+        margin: 10px 0px 10px 0px;
         box-sizing: border-box;
     }
-    
+
     .mapForm div select {
         width: 200px;
-        padding: 10px 10px 10px 10px;
+        padding: 10px 30px 10px 10px;
         font-size: 12px;
     }
-    
+
     .mapForm div p {
         min-width: 100px;
         max-width: 100px;
         margin-right: 20px;
         font-size: 12px;
     }
-    
+
 }
 
 /************************SCROLL BAR******************************/
-::-webkit-scrollbar {
-    width: 10px;
+@media only screen and (min-width: 640px) {
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.00);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #CCCCCC;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #505050;
+    }
+
+    ::-webkit-scrollbar-corner {
+        background: rgba(0, 0, 0, 0.00);
+    }
 }
 
-::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.00);
+/******************LOADER******************************/
+.loader {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    right: 46vw;
+    top: calc(50vh - 4vw);
+    border: 1vh solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 1vh solid #079042;
+    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.1);
+    width: 8vw;
+    height: 8vw;
+    -webkit-animation: spin 1.2s linear infinite;
+    /* Safari */
+    animation: spin 1.2s linear infinite;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #CCCCCC;
+/* Safari */
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: #505050;
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
-::-webkit-scrollbar-corner {
-    background: rgba(0, 0, 0, 0.00);
+
+/********************FLOATING INFO*******************************/
+.float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    display: table;
+    background-color: rgb(255, 255, 255);
+    color: #107C41;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    box-sizing: border-box;
+}
+
+.float:hover {
+    border: 2px solid #107C41;
+}
+
+.float p {
+    display: table-cell;
+    vertical-align: middle;
 }

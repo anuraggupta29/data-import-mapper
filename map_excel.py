@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import re
-from find_job_titles import Finder
 
 #globals-----------------------------------------------------
 df_map_names = {
@@ -110,13 +109,6 @@ def findDesignation():
         if len([i for i in colWords if i in designationList]) > 0:
             designation = col
             break
-
-    if designation is None:
-        finder = Finder()
-        for col in str_columns:
-            set_col = set(df_sampled[col])
-            if len(finder.findall(' '.join(set_col))) > 0.3*len(set_col):
-                designation = col
 
     return designation
 
@@ -298,7 +290,3 @@ def mapExcelMain(filename):
 
     except:
         return 'Error'
-
-#-------------------------------------------------------------
-if __name__ == '__main__':
-    print(mapExcelMain('output.xlsx'))

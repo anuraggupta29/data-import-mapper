@@ -16,7 +16,7 @@ def datetimeToDate():
     for col in date_columns:
         newDf[col] = newDf[col].dt.strftime('%Y-%m-%d')
 
-def manualMapExcel(filename, headers):
+def manualMapExcel(file, headers):
     global newDf
     global df
     global name_list
@@ -27,7 +27,7 @@ def manualMapExcel(filename, headers):
     try:
         newDf = pd.DataFrame()
 
-        df = pd.read_excel(filename, sheet_name=0)
+        df = pd.read_excel(file, sheet_name=0)
         headerlist = headers.split(',')
         #print(headerlist)
         #print(df.head())
@@ -67,9 +67,6 @@ def manualMapExcel(filename, headers):
         datetimeToDate()
 
         return newDf.to_json(orient='records')
+
     except:
         return 'Error'
-
-#-------------------------------------------------------------
-if __name__ == '__main__':
-    print(mapExcelMain('output.xlsx'))
